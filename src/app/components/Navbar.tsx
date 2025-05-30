@@ -15,9 +15,13 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex gap-6 text-sm">
-          <a href="#about" className="hover:text-teal-400 transition">
+          <a
+            href="#about"
+            className="hover:text-[var(--accent-teal)] transition"
+          >
             About
           </a>
+
           <a href="#experience" className="hover:text-teal-400 transition">
             Experience
           </a>

@@ -1,24 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Typewriter() {
-  const fullText = "Hi, my name is Harith Madani";
-  const [displayedText, setDisplayedText] = useState("");
+  const [text, setText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const fullText = "Hi, my name is Harith Madani.";
+  const speed = 100;
 
   useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      setDisplayedText((prev) => prev + fullText[index]);
-      index++;
-      if (index === fullText.length) clearInterval(interval);
-    }, 80);
-    return () => clearInterval(interval);
-  }, []);
+    if (currentIndex < fullText.length) {
+      const timeout = setTimeout(() => {
+        setText(fullText.slice(0, currentIndex + 1));
+        setCurrentIndex(currentIndex + 1);
+      }, speed);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, fullText, speed]);
 
   return (
-    <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-mono text-teal-400">
-      {displayedText}
+    <h1 className="text-2xl md:text-3xl font-mono text-[var(--accent-teal)]">
+      {text}
       <span className="animate-pulse">|</span>
     </h1>
   );

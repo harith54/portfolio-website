@@ -1,16 +1,15 @@
-// components/About.tsx
 import Image from "next/image";
+import Typewriter from "./Typewriter"; // Make sure path is correct
 
 export default function About() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 py-12 bg-black text-white"
+      className="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 py-12 bg-[#121212] text-white"
     >
       <div className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold">
-          <span className="text-teal-400">Harith Madani</span>
-        </h1>
+        <Typewriter />
+
         <p className="text-lg text-gray-300">
           Computer Science & Engineering @ The Ohio State University
         </p>
