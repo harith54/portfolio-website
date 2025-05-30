@@ -1,5 +1,5 @@
 import "./globals.css";
-import Navbar from "./components/Navbar"; // Assuming you make a Navbar
+import Navbar from "./components/Navbar";
 
 export default function RootLayout({
   children,
@@ -10,11 +10,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Rubik:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fira+Code:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#121212] text-[#e0e0e0] font-sans tracking-tight leading-relaxed">
+      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] font-mono tracking-tight leading-relaxed antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>
       </body>
