@@ -448,20 +448,6 @@ export default function Experience() {
             </div>
           ))}
         </div>
-
-        <Skills />
-        {/* Call to action */}
-        <div className="text-center mt-20">
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-transparent border-2 border-[#00a3a9] text-[#00a3a9] rounded-lg hover:bg-[#00a3a9] hover:text-black transition-all duration-300 font-medium group"
-          >
-            View My Projects
-            <span className="transform transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </a>
-        </div>
       </div>
     </section>
   );
