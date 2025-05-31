@@ -4,6 +4,36 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  // Enhanced smooth scroll function
+  const smoothScrollTo = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      const navHeight = 80; // Height of the fixed navbar
+      const elementPosition = element.offsetTop - navHeight;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+
+      // Close mobile menu after click
+      setIsOpen(false);
+
+      // Update active section
+      setActiveSection(elementId);
+    }
+  };
+
+  // Handle click events for smooth scrolling
+  const handleSectionClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
+    smoothScrollTo(sectionId);
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[var(--bg-primary)]/95 backdrop-blur-md border-b border-[var(--border-color)] text-[var(--text-primary)]">
@@ -20,26 +50,49 @@ export default function Navbar() {
         <div className="hidden md:flex gap-8 text-sm font-medium">
           <a
             href="#about"
-            className="text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group"
+            onClick={(e) => handleSectionClick(e, "about")}
+            className={`text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group ${
+              activeSection === "about" ? "text-[var(--accent-teal)]" : ""
+            }`}
           >
             <span className="text-[var(--accent-orange)]">01.</span> About
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--accent-teal)] group-hover:w-full transition-all duration-300"></span>
+            <span
+              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
+                activeSection === "about" ? "w-full" : "w-0 group-hover:w-full"
+              }`}
+            ></span>
           </a>
 
           <a
             href="#experience"
-            className="text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group"
+            onClick={(e) => handleSectionClick(e, "experience")}
+            className={`text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group ${
+              activeSection === "experience" ? "text-[var(--accent-teal)]" : ""
+            }`}
           >
             <span className="text-[var(--accent-orange)]">02.</span> Experience
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--accent-teal)] group-hover:w-full transition-all duration-300"></span>
+            <span
+              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
+                activeSection === "experience"
+                  ? "w-full"
+                  : "w-0 group-hover:w-full"
+              }`}
+            ></span>
           </a>
 
           <a
             href="#skills"
-            className="text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group"
+            onClick={(e) => handleSectionClick(e, "skills")}
+            className={`text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group ${
+              activeSection === "skills" ? "text-[var(--accent-teal)]" : ""
+            }`}
           >
             <span className="text-[var(--accent-orange)]">03.</span> Skills
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--accent-teal)] group-hover:w-full transition-all duration-300"></span>
+            <span
+              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
+                activeSection === "skills" ? "w-full" : "w-0 group-hover:w-full"
+              }`}
+            ></span>
           </a>
 
           <a
@@ -52,10 +105,19 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group"
+            onClick={(e) => handleSectionClick(e, "contact")}
+            className={`text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group ${
+              activeSection === "contact" ? "text-[var(--accent-teal)]" : ""
+            }`}
           >
             <span className="text-[var(--accent-orange)]">05.</span> Contact
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--accent-teal)] group-hover:w-full transition-all duration-300"></span>
+            <span
+              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
+                activeSection === "contact"
+                  ? "w-full"
+                  : "w-0 group-hover:w-full"
+              }`}
+            ></span>
           </a>
         </div>
 
@@ -122,16 +184,36 @@ export default function Navbar() {
 
           <div className="relative px-6 pb-8 pt-4 flex flex-col gap-2 text-sm font-medium">
             {[
-              { href: "#about", number: "01", text: "About" },
-              { href: "#experience", number: "02", text: "Experience" },
-              { href: "#skills", number: "03", text: "Skills" },
+              {
+                href: "#about",
+                number: "01",
+                text: "About",
+                sectionId: "about",
+              },
+              {
+                href: "#experience",
+                number: "02",
+                text: "Experience",
+                sectionId: "experience",
+              },
+              {
+                href: "#skills",
+                number: "03",
+                text: "Skills",
+                sectionId: "skills",
+              },
               {
                 href: "/projects",
                 number: "04",
                 text: "Projects",
                 isLink: true,
               },
-              { href: "#contact", number: "05", text: "Contact" },
+              {
+                href: "#contact",
+                number: "05",
+                text: "Contact",
+                sectionId: "contact",
+              },
             ].map((item, index) => (
               <div
                 key={item.text}
@@ -146,8 +228,16 @@ export default function Navbar() {
               >
                 <a
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="group relative block py-3 px-4 rounded-lg text-[var(--text-secondary)] hover:text-[var(--accent-teal)] hover:bg-[var(--bg-tertiary)]/50 transition-all duration-300 border border-transparent hover:border-[var(--accent-teal)]/20"
+                  onClick={
+                    item.sectionId
+                      ? (e) => handleSectionClick(e, item.sectionId)
+                      : () => setIsOpen(false)
+                  }
+                  className={`group relative block py-3 px-4 rounded-lg text-[var(--text-secondary)] hover:text-[var(--accent-teal)] hover:bg-[var(--bg-tertiary)]/50 transition-all duration-300 border border-transparent hover:border-[var(--accent-teal)]/20 ${
+                    activeSection === item.sectionId
+                      ? "text-[var(--accent-teal)] border-[var(--accent-teal)]/20"
+                      : ""
+                  }`}
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-[var(--accent-orange)] font-mono text-xs">
@@ -155,7 +245,13 @@ export default function Navbar() {
                     </span>
                     <span className="relative">
                       {item.text}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--accent-teal)] group-hover:w-full transition-all duration-300"></span>
+                      <span
+                        className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
+                          activeSection === item.sectionId
+                            ? "w-full"
+                            : "w-0 group-hover:w-full"
+                        }`}
+                      ></span>
                     </span>
                   </div>
 

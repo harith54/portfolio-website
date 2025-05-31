@@ -6,7 +6,7 @@ export default function Typewriter() {
   const [text, setText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
-  const fullText = "Hi, my name is Harith Madani.";
+  const fullText = "Hi, my name is Harith Madani!";
   const speed = 80;
 
   useEffect(() => {

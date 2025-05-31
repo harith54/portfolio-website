@@ -1,7 +1,32 @@
+"use client";
+
 import Image from "next/image";
 import Typewriter from "./Typewriter";
 
 export default function About() {
+  // Enhanced smooth scroll function
+  const smoothScrollTo = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      const navHeight = 80; // Height of the fixed navbar
+      const elementPosition = element.offsetTop - navHeight;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // Handle click events for smooth scrolling
+  const handleSectionClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
+    smoothScrollTo(sectionId);
+  };
+
   return (
     <section
       id="about"
@@ -61,7 +86,8 @@ export default function About() {
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <a
             href="#experience"
-            className="group px-8 py-3 bg-transparent border-2 border-[#00a3a9] text-[#00a3a9] rounded-lg hover:bg-[#00a3a9] hover:text-black transition-all duration-300 font-medium text-center"
+            onClick={(e) => handleSectionClick(e, "experience")}
+            className="group px-8 py-3 bg-transparent border-2 border-[#00a3a9] text-[#00a3a9] rounded-lg hover:bg-[#00a3a9] hover:text-black transition-all duration-300 font-medium text-center cursor-pointer"
           >
             <span className="flex items-center justify-center gap-2">
               View My Experience
@@ -73,7 +99,8 @@ export default function About() {
 
           <a
             href="#contact"
-            className="px-8 py-3 bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] text-[var(--text-primary)] rounded-lg hover:border-[var(--accent-purple)] hover:text-[var(--accent-purple)] transition-all duration-300 font-medium text-center"
+            onClick={(e) => handleSectionClick(e, "contact")}
+            className="px-8 py-3 bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] text-[var(--text-primary)] rounded-lg hover:border-[var(--accent-purple)] hover:text-[var(--accent-purple)] transition-all duration-300 font-medium text-center cursor-pointer"
           >
             Get In Touch
           </a>

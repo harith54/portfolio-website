@@ -16,6 +16,32 @@
   --border-accent: #4dd0e1;
 }
 
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar height */
+}
+
+/* Enhanced smooth scrolling with custom easing */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Fonts */
 body {
   background: var(--bg-primary);
@@ -70,6 +96,16 @@ h6 {
 
 .glow-teal:hover {
   box-shadow: 0 0 30px rgba(77, 208, 225, 0.5);
+}
+
+/* Smooth scroll enhancement for webkit browsers */
+body {
+  scroll-behavior: smooth;
+}
+
+/* Additional scroll enhancement for better performance */
+.scroll-smooth {
+  scroll-behavior: smooth;
 }
 
 @media (prefers-color-scheme: dark) {
