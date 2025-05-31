@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Skills from "./Skills";
 
 export default function Experience() {
   const experiences = [
@@ -27,9 +28,9 @@ export default function Experience() {
     {
       id: 2,
       company: "SEO Tech Developer",
-      role: "Software Engineering Fellow",
+      role: "Software Engineering Intern",
       location: "Remote",
-      duration: "January 2025 – Current",
+      duration: "June 2025 – Current",
       current: true,
       logo: "/seo-logo.png",
       skills: [
@@ -50,7 +51,7 @@ export default function Experience() {
       id: 3,
       company: "FactSet",
       role: "Software Engineering MESH Extern",
-      location: "Remote",
+      location: "Norwalk, CT",
       duration: "April 2025 – May 2025",
       current: false,
       logo: "/factset-logo.png",
@@ -126,7 +127,7 @@ export default function Experience() {
     },
     {
       id: 7,
-      company: "Westerwood",
+      company: "Westerwood Retirement Home",
       role: "Server",
       location: "Columbus, OH",
       duration: "October 2020 – August 2023",
@@ -416,19 +417,13 @@ export default function Experience() {
                       <li
                         key={i}
                         className={`text-sm text-[var(--text-secondary)] flex items-start gap-2 ${
-                          index % 2 === 0
-                            ? ""
-                            : "md:flex-row-reverse md:justify-end"
+                          index % 2 === 0 ? "" : "md:flex-row-reverse"
                         }`}
                       >
                         <span className="text-[#00a3a9] mt-0.5 flex-shrink-0">
                           {index % 2 === 0 ? "▸" : "◂"}
                         </span>
-                        <span
-                          className={index % 2 === 0 ? "" : "md:text-right"}
-                        >
-                          {insight}
-                        </span>
+                        <span className="flex-1">{insight}</span>
                       </li>
                     ))}
                   </ul>
@@ -454,6 +449,7 @@ export default function Experience() {
           ))}
         </div>
 
+        <Skills />
         {/* Call to action */}
         <div className="text-center mt-20">
           <a
