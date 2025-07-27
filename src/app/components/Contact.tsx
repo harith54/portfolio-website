@@ -36,20 +36,6 @@ export default function Contact() {
       bgColor: "hover:shadow-[var(--accent-orange)]/20",
     },
     {
-      id: "school-email",
-      name: "School Email",
-      value: "madani.13@buckeyemail.osu.edu",
-      href: "mailto:madani.13@buckeyemail.osu.edu",
-      icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
-        </svg>
-      ),
-      description: "Academic inquiries",
-      color: "hover:border-[#bb0000] hover:text-[#bb0000]",
-      bgColor: "hover:shadow-[#bb0000]/20",
-    },
-    {
       id: "github",
       name: "GitHub",
       value: "harith54",
@@ -71,7 +57,7 @@ export default function Contact() {
       id="contact"
       className="min-h-screen py-20 px-6 bg-[var(--bg-primary)] text-[var(--text-primary)] relative overflow-hidden flex items-center justify-center"
     >
-      {/* Animated background elements */}
+      {/* Background pattern with animated dots */}
       <div className="absolute inset-0">
         {/* Grid pattern */}
         <div
@@ -83,39 +69,46 @@ export default function Contact() {
           }}
         ></div>
 
-        {/* Floating geometric shapes */}
+        {/* Animated dots with different movements */}
+        <div className="absolute top-20 left-12 w-2 h-2 bg-[var(--accent-teal)]/60 rounded-full animate-pulse"></div>
         <div
-          className="absolute top-20 left-10 w-20 h-20 border border-[var(--accent-teal)]/20 rotate-45 animate-spin"
-          style={{ animationDuration: "20s" }}
+          className="absolute top-32 right-16 w-3 h-3 bg-[var(--accent-orange)]/40 rounded-full animate-bounce"
+          style={{ animationDelay: "0.5s", animationDuration: "3s" }}
         ></div>
-        <div className="absolute top-1/3 right-12 w-16 h-16 border border-[var(--accent-orange)]/30 rounded-full animate-pulse"></div>
         <div
-          className="absolute bottom-1/4 left-16 w-12 h-12 border border-[var(--accent-purple)]/25 animate-bounce"
-          style={{ animationDuration: "3s" }}
+          className="absolute top-1/3 left-20 w-1.5 h-1.5 bg-[var(--accent-purple)]/50 rounded-full animate-pulse"
+          style={{ animationDelay: "1s" }}
         ></div>
-        <div className="absolute bottom-20 right-20 w-8 h-8 bg-[var(--accent-teal)]/10 rotate-12 animate-ping"></div>
+        <div
+          className="absolute top-1/2 right-12 w-2.5 h-2.5 bg-[var(--accent-teal)]/30 rounded-full animate-bounce"
+          style={{ animationDelay: "1.5s", animationDuration: "4s" }}
+        ></div>
+        <div
+          className="absolute bottom-1/3 left-16 w-2 h-2 bg-[var(--accent-orange)]/40 rounded-full animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute bottom-20 right-20 w-1 h-1 bg-[var(--accent-purple)]/60 rounded-full animate-bounce"
+          style={{ animationDelay: "0.3s", animationDuration: "2.5s" }}
+        ></div>
 
-        {/* Orbiting dots */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="relative w-96 h-96">
-            <div
-              className="absolute top-0 left-1/2 w-2 h-2 bg-[var(--accent-teal)]/60 rounded-full animate-spin"
-              style={{ transformOrigin: "0 192px", animationDuration: "15s" }}
-            ></div>
-            <div
-              className="absolute top-0 left-1/2 w-1.5 h-1.5 bg-[var(--accent-orange)]/50 rounded-full animate-spin"
-              style={{
-                transformOrigin: "0 150px",
-                animationDuration: "12s",
-                animationDirection: "reverse",
-              }}
-            ></div>
-            <div
-              className="absolute top-0 left-1/2 w-1 h-1 bg-[var(--accent-purple)]/40 rounded-full animate-spin"
-              style={{ transformOrigin: "0 100px", animationDuration: "8s" }}
-            ></div>
-          </div>
-        </div>
+        {/* More scattered dots for depth */}
+        <div
+          className="absolute top-40 left-4 w-1.5 h-1.5 bg-[var(--accent-teal)]/30 rounded-full animate-pulse"
+          style={{ animationDelay: "3s" }}
+        ></div>
+        <div
+          className="absolute top-3/4 right-8 w-2 h-2 bg-[var(--accent-orange)]/35 rounded-full animate-bounce"
+          style={{ animationDelay: "2.5s", animationDuration: "3.5s" }}
+        ></div>
+        <div
+          className="absolute bottom-40 left-8 w-1 h-1 bg-[var(--accent-purple)]/45 rounded-full animate-pulse"
+          style={{ animationDelay: "1.8s" }}
+        ></div>
+        <div
+          className="absolute bottom-32 right-4 w-2.5 h-2.5 bg-[var(--accent-teal)]/25 rounded-full animate-bounce"
+          style={{ animationDelay: "0.8s", animationDuration: "4.2s" }}
+        ></div>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10 w-full">
@@ -148,7 +141,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
           {contacts.map((contact) => (
             <a
               key={contact.id}
@@ -213,50 +206,6 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* Quick Action Section */}
-        <div className="text-center">
-          <div className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-4">
-              Prefer a direct approach?
-            </h3>
-            <p className="text-[var(--text-secondary)] mb-6">
-              Feel free to reach out via email for the fastest response
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:harithmada@gmail.com"
-                className="group px-8 py-3 bg-transparent border-2 border-[#00a3a9] text-[#00a3a9] rounded-lg hover:bg-[#00a3a9] hover:text-black transition-all duration-300 font-medium text-center"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <svg
-                    className="w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
-                  Send Email
-                  <span className="transform group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
-                </span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/harith-madani-799382292"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 bg-[var(--bg-tertiary)] border-2 border-[var(--border-color)] text-[var(--text-primary)] rounded-lg hover:border-[#0077b5] hover:text-[#0077b5] transition-all duration-300 font-medium text-center"
-              >
-                Connect on LinkedIn
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer note */}
         <div className="text-center mt-12">
           <p className="text-sm text-[var(--text-muted)]">
             Built with{" "}

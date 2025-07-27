@@ -28,13 +28,15 @@ export default function Typewriter() {
   }, [currentIndex, fullText, speed]);
 
   return (
-    <h1 className="text-3xl md:text-4xl lg:text-5xl font-mono text-[var(--accent-teal)] font-medium leading-tight">
-      {text}
-      {showCursor && (
-        <span className="animate-pulse text-[var(--accent-orange)] ml-1">
-          |
-        </span>
-      )}
-    </h1>
+    <div className="h-[3.5rem] md:h-[4rem] lg:h-[5rem] flex items-start">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-mono text-[var(--accent-teal)] font-medium leading-tight">
+        {text}
+        {showCursor && (
+          <span className="animate-pulse text-[var(--accent-orange)] ml-1">
+            |
+          </span>
+        )}
+      </h1>
+    </div>
   );
 }

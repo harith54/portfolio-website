@@ -47,7 +47,7 @@ export default function About() {
       <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 z-10 max-w-2xl">
         <Typewriter />
 
-        <div className="space-y-4">
+        <div className="space-y-4 lg:mt-8">
           <p className="text-xl md:text-2xl text-[var(--text-secondary)] font-light">
             <span className="text-[var(--accent-purple)]">
               Computer Science & Engineering
@@ -91,9 +91,7 @@ export default function About() {
           >
             <span className="flex items-center justify-center gap-2">
               View My Experience
-              <span className="transform group-hover:translate-x-1 transition-transform">
-                →
-              </span>
+              <span className="transform group-hover:translate-x-1 transition-transform"></span>
             </span>
           </a>
 
@@ -109,7 +107,7 @@ export default function About() {
 
       <div className="lg:w-1/2 mt-12 lg:mt-0 flex justify-center z-10">
         <div className="relative">
-          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-[#00a3a9] shadow-2xl hover:scale-105 transition-all duration-500 relative">
+          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-[#00a3a9] shadow-2xl transition-all duration-300 relative">
             <Image
               src="/headshot.JPG"
               alt="Harith Madani"

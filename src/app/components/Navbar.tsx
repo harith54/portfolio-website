@@ -96,11 +96,20 @@ export default function Navbar() {
           </a>
 
           <a
-            href="/projects"
-            className="text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group"
+            href="#projects"
+            onClick={(e) => handleSectionClick(e, "projects")}
+            className={`text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group ${
+              activeSection === "projects" ? "text-[var(--accent-teal)]" : ""
+            }`}
           >
             <span className="text-[var(--accent-orange)]">04.</span> Projects
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--accent-teal)] group-hover:w-full transition-all duration-300"></span>
+            <span
+              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
+                activeSection === "projects"
+                  ? "w-full"
+                  : "w-0 group-hover:w-full"
+              }`}
+            ></span>
           </a>
 
           <a
@@ -203,10 +212,10 @@ export default function Navbar() {
                 sectionId: "skills",
               },
               {
-                href: "/projects",
+                href: "#projects",
                 number: "04",
                 text: "Projects",
-                isLink: true,
+                sectionId: "projects",
               },
               {
                 href: "#contact",
@@ -228,11 +237,7 @@ export default function Navbar() {
               >
                 <a
                   href={item.href}
-                  onClick={
-                    item.sectionId
-                      ? (e) => handleSectionClick(e, item.sectionId)
-                      : () => setIsOpen(false)
-                  }
+                  onClick={(e) => handleSectionClick(e, item.sectionId)}
                   className={`group relative block py-3 px-4 rounded-lg text-[var(--text-secondary)] hover:text-[var(--accent-teal)] hover:bg-[var(--bg-tertiary)]/50 transition-all duration-300 border border-transparent hover:border-[var(--accent-teal)]/20 ${
                     activeSection === item.sectionId
                       ? "text-[var(--accent-teal)] border-[var(--accent-teal)]/20"

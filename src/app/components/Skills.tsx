@@ -3,7 +3,7 @@ import type { JSX } from "react";
 
 interface Skill {
   name: string;
-  level: "Advanced" | "Intermediate" | "Basic";
+  confidence: "High" | "Medium" | "Learning";
 }
 
 interface SkillCategory {
@@ -22,45 +22,47 @@ export default function Skills(): JSX.Element {
         </svg>
       ),
       skills: [
-        { name: "Python", level: "Advanced" },
-        { name: "JavaScript", level: "Advanced" },
-        { name: "HTML", level: "Advanced" },
-        { name: "Java", level: "Intermediate" },
-        { name: "TypeScript", level: "Intermediate" },
-        { name: "CSS", level: "Intermediate" },
-        { name: "C", level: "Basic" },
-        { name: "SQL", level: "Basic" },
-        { name: "R", level: "Basic" },
+        { name: "Python", confidence: "High" },
+        { name: "JavaScript", confidence: "High" },
+        { name: "HTML", confidence: "High" },
+        { name: "Java", confidence: "Medium" },
+        { name: "TypeScript", confidence: "Medium" },
+        { name: "CSS", confidence: "Medium" },
+        { name: "C", confidence: "Learning" },
+        { name: "SQL", confidence: "Learning" },
+        { name: "R", confidence: "Learning" },
       ],
     },
     {
-      title: "Frameworks",
+      title: "Frameworks & Libraries",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
       ),
       skills: [
-        { name: "React", level: "Advanced" },
-        { name: "Flask", level: "Basic" },
-        { name: "Express", level: "Basic" },
+        { name: "React", confidence: "High" },
+        { name: "Next.js", confidence: "Medium" },
+        { name: "Flask", confidence: "Medium" },
+        { name: "Tailwind CSS", confidence: "Medium" },
+        { name: "Express", confidence: "Learning" },
       ],
     },
     {
-      title: "Tools & Software",
+      title: "Tools & Technologies",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
         </svg>
       ),
       skills: [
-        { name: "Git", level: "Advanced" },
-        { name: "VSCode", level: "Advanced" },
-        { name: "Eclipse", level: "Intermediate" },
-        { name: "Linux", level: "Basic" },
-        { name: "Unix", level: "Basic" },
-        { name: "MongoDB", level: "Basic" },
-        { name: "PostMan", level: "Basic" },
+        { name: "Git", confidence: "High" },
+        { name: "VSCode", confidence: "High" },
+        { name: "Eclipse", confidence: "Medium" },
+        { name: "Linux", confidence: "Medium" },
+        { name: "MongoDB", confidence: "Learning" },
+        { name: "PostgreSQL", confidence: "Learning" },
+        { name: "Postman", confidence: "Learning" },
       ],
     },
   ];
@@ -78,29 +80,47 @@ export default function Skills(): JSX.Element {
     "Discrete Structures",
   ];
 
-  const getLevelWidth = (level: Skill["level"]): string => {
-    switch (level) {
-      case "Advanced":
-        return "w-full";
-      case "Intermediate":
-        return "w-3/4";
-      case "Basic":
-        return "w-1/2";
+  const getConfidenceIcon = (confidence: Skill["confidence"]): JSX.Element => {
+    switch (confidence) {
+      case "High":
+        return (
+          <div className="flex gap-1">
+            <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
+            <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
+            <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
+          </div>
+        );
+      case "Medium":
+        return (
+          <div className="flex gap-1">
+            <div className="w-2 h-2 rounded-full bg-[var(--accent-purple)]"></div>
+            <div className="w-2 h-2 rounded-full bg-[var(--accent-purple)]"></div>
+            <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+          </div>
+        );
+      case "Learning":
+        return (
+          <div className="flex gap-1">
+            <div className="w-2 h-2 rounded-full bg-[var(--accent-orange)]"></div>
+            <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+            <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+          </div>
+        );
       default:
-        return "w-1/2";
+        return <div></div>;
     }
   };
 
-  const getLevelColor = (level: Skill["level"]): string => {
-    switch (level) {
-      case "Advanced":
-        return "bg-gradient-to-r from-[var(--accent-teal)] to-[var(--accent-teal)]/80";
-      case "Intermediate":
-        return "bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-purple)]/80";
-      case "Basic":
-        return "bg-gradient-to-r from-[var(--accent-orange)] to-[var(--accent-orange)]/80";
+  const getConfidenceLabel = (confidence: Skill["confidence"]): string => {
+    switch (confidence) {
+      case "High":
+        return "Confident";
+      case "Medium":
+        return "Comfortable";
+      case "Learning":
+        return "Learning";
       default:
-        return "bg-gradient-to-r from-[var(--text-muted)] to-[var(--text-muted)]/80";
+        return "";
     }
   };
 
@@ -160,27 +180,15 @@ export default function Skills(): JSX.Element {
                 <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name} className="group/skill">
-                      <div className="flex justify-between items-center mb-2">
+                      <div className="flex justify-between items-center">
                         <span className="text-[var(--text-secondary)] font-medium">
                           {skill.name}
                         </span>
-                        <span className="text-xs text-[var(--text-muted)] uppercase tracking-wide">
-                          {skill.level}
-                        </span>
-                      </div>
-                      <div className="w-full bg-[var(--bg-tertiary)] rounded-full h-2 overflow-hidden border border-[var(--border-color)]/30">
-                        <div
-                          className={`h-full rounded-full transition-all duration-1000 ease-out group-hover/skill:opacity-90 relative ${getLevelColor(
-                            skill.level
-                          )} ${getLevelWidth(skill.level)}`}
-                          style={{
-                            animationDelay: `${
-                              categoryIndex * 200 + skillIndex * 100
-                            }ms`,
-                          }}
-                        >
-                          {/* Subtle glow effect */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300"></div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-[var(--text-muted)] uppercase tracking-wide">
+                            {getConfidenceLabel(skill.confidence)}
+                          </span>
+                          {getConfidenceIcon(skill.confidence)}
                         </div>
                       </div>
                     </div>
@@ -188,6 +196,47 @@ export default function Skills(): JSX.Element {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Confidence Legend */}
+          <div className="flex justify-center mb-16">
+            <div className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl p-6">
+              <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4 text-center">
+                Confidence Level
+              </h4>
+              <div className="flex flex-col sm:flex-row gap-4 text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
+                  </div>
+                  <span className="text-[var(--text-secondary)]">
+                    Confident - Regular use & deep understanding
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[var(--accent-purple)]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[var(--accent-purple)]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+                  </div>
+                  <span className="text-[var(--text-secondary)]">
+                    Comfortable - Some experience & knowledge
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[var(--accent-orange)]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+                  </div>
+                  <span className="text-[var(--text-secondary)]">
+                    Learning - Recently acquired & improving
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Coursework Section */}
@@ -235,18 +284,6 @@ export default function Skills(): JSX.Element {
                 Priority coursework for software development
               </p>
             </div>
-          </div>
-          {/* Call to action */}
-          <div className="text-center mt-20">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-transparent border-2 border-[#00a3a9] text-[#00a3a9] rounded-lg hover:bg-[#00a3a9] hover:text-black transition-all duration-300 font-medium group"
-            >
-              View My Projects
-              <span className="transform transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </a>
           </div>
         </div>
       </section>

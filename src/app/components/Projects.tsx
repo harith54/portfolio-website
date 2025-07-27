@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import GitHubCalendar from "react-github-calendar";
 
 interface ProjectLinks {
-  github: string;
+  github?: string;
   demo?: string;
 }
 
@@ -20,7 +19,6 @@ interface Project {
 interface FeaturedProject extends Project {
   featured: boolean;
   longDescription: string;
-  metrics: Record<string, string>;
 }
 
 export default function Projects() {
@@ -28,9 +26,9 @@ export default function Projects() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   const projectCategories = [
-    { id: "all", label: "All Projects", count: 15 },
+    { id: "all", label: "All Projects", count: 16 },
     { id: "fullstack", label: "Full-Stack", count: 3 },
-    { id: "ai", label: "AI/ML", count: 2 },
+    { id: "ai", label: "AI/ML", count: 3 },
     { id: "academic", label: "Academic", count: 8 },
     { id: "frontend", label: "Frontend", count: 3 },
   ];
@@ -47,19 +45,13 @@ export default function Projects() {
         "Full-stack application with personalized recommendations, meal planning, 100+ workout database, and AI-powered insights",
       tech: ["Python", "Flask", "React", "SQLite", "USDA API"],
       highlights: [
-        "3,000+ lines of Python backend code",
-        "5,000+ lines of React frontend",
-        "12-table database schema",
-        "30+ RESTful API endpoints",
-        "100+ exercises and routines",
+        "Comprehensive nutrition tracking system",
+        "Extensive workout database with routines",
+        "Personalized meal planning features",
+        "REST API with 30+ endpoints",
       ],
       links: {
         github: "https://github.com/harith54/nutrifit",
-      },
-      metrics: {
-        lines: "8,000+",
-        tables: "12",
-        apis: "30+",
       },
     },
     {
@@ -82,17 +74,35 @@ export default function Projects() {
         "Won hackathon competition",
         "Real nonprofit partner collaboration",
         "Social-style feed interface",
-        "User authentication system",
-        "Responsive design",
+        "Complete user authentication system",
       ],
       links: {
         github: "https://github.com/harith54/code-for-good",
       },
-      metrics: {
-        duration: "48 hours",
-        team: "4 members",
-        result: "Winner",
-      },
+    },
+    {
+      id: "myles-travel-ai",
+      title: "Myles Travel AI",
+      category: "ai",
+      featured: true,
+      description:
+        "AI-powered travel assistant using ChatGPT-4 API with specialized travel data sources",
+      longDescription:
+        "Intelligent travel planning assistant that integrates ChatGPT-4 with multiple APIs including language, Yelp, Reddit, and culture APIs to provide accurate, personalized recommendations beyond standard chatbot capabilities",
+      tech: [
+        "Python",
+        "ChatGPT-4 API",
+        "Yelp API",
+        "Google Flights API",
+        "Reddit API",
+      ],
+      highlights: [
+        "Multi-API integration for comprehensive travel data",
+        "Cultural norms and social insights discovery",
+        "Integrated cheap flight finder functionality",
+        "Won FactSet MESH Externship hackathon",
+      ],
+      links: {},
     },
     {
       id: "techknow",
@@ -108,16 +118,10 @@ export default function Projects() {
         "AI-driven feedback system",
         "LeetCode-style problems database",
         "Difficulty-based questioning",
-        "Secure API integration",
         "Modular Python architecture",
       ],
       links: {
         github: "https://github.com/harith54/techknow",
-      },
-      metrics: {
-        problems: "50+",
-        accuracy: "95%",
-        feedback: "AI-powered",
       },
     },
   ];
@@ -130,7 +134,7 @@ export default function Projects() {
       description:
         "Java application that processes text files and generates HTML tag clouds with frequency-based sizing",
       tech: ["Java", "HTML", "File I/O"],
-      links: { github: "https://github.com/harith54/tag-cloud-generator" },
+      links: {},
       highlights: [
         "Word frequency analysis",
         "HTML generation",
@@ -144,7 +148,7 @@ export default function Projects() {
       description:
         "Mathematical tools for cryptographic algorithms including modular arithmetic and primality testing",
       tech: ["Java", "Number Theory", "Cryptography"],
-      links: { github: "https://github.com/harith54/crypto-utilities" },
+      links: {},
       highlights: [
         "RSA algorithm support",
         "Efficient exponentiation",
@@ -158,7 +162,7 @@ export default function Projects() {
       description:
         "GUI calculator supporting arithmetic operations on arbitrarily large natural numbers",
       tech: ["Java", "Swing", "MVC Pattern"],
-      links: { github: "https://github.com/harith54/nn-calculator" },
+      links: {},
       highlights: [
         "Large number handling",
         "MVC architecture",
@@ -172,7 +176,7 @@ export default function Projects() {
       description:
         "Multi-feed RSS parser that compiles news from various sources into a unified HTML dashboard",
       tech: ["Java", "XML Parsing", "HTML"],
-      links: { github: "https://github.com/harith54/rss-aggregator" },
+      links: {},
       highlights: ["Multi-feed support", "XML DOM parsing", "News compilation"],
     },
     {
@@ -182,7 +186,7 @@ export default function Projects() {
       description:
         "HTML glossary generator with automatic cross-referencing and alphabetical organization",
       tech: ["Java", "HTML", "String Processing"],
-      links: { github: "https://github.com/harith54/glossary" },
+      links: {},
       highlights: ["Automatic linking", "HTML generation", "Cross-referencing"],
     },
     {
@@ -192,7 +196,7 @@ export default function Projects() {
       description:
         "Custom data structure implementing efficient sorting using heap-based algorithms",
       tech: ["Java", "Data Structures", "Algorithms"],
-      links: { github: "https://github.com/harith54/sorting-machine" },
+      links: {},
       highlights: [
         "Custom heap implementation",
         "Batch sorting optimization",
@@ -206,7 +210,7 @@ export default function Projects() {
       description:
         "Recursive descent parser for a custom block language with tokenization and AST generation",
       tech: ["Java", "Compiler Design", "Parsing"],
-      links: { github: "https://github.com/harith54/bl-parser" },
+      links: {},
       highlights: [
         "Recursive descent parsing",
         "AST generation",
@@ -220,7 +224,7 @@ export default function Projects() {
       description:
         "Collection of x86-64 assembly programs exploring low-level operations and system integration",
       tech: ["Assembly", "C", "x86-64"],
-      links: { github: "https://github.com/harith54/assembly-labs" },
+      links: {},
       highlights: [
         "Low-level programming",
         "C-Assembly integration",
@@ -234,7 +238,7 @@ export default function Projects() {
       description:
         "Real-time weather application with city search and dynamic weather data visualization",
       tech: ["React", "Weather API", "CSS"],
-      links: { github: "https://github.com/harith54/weather-app" },
+      links: { github: "https://github.com/harith54/weather-app-react" },
       highlights: [
         "Real-time API integration",
         "Dynamic UI updates",
@@ -248,7 +252,7 @@ export default function Projects() {
       description:
         "Quiz application with multiple-choice questions, score tracking, and immediate feedback",
       tech: ["React", "JavaScript", "CSS"],
-      links: { github: "https://github.com/harith54/trivia-game" },
+      links: {},
       highlights: [
         "Interactive gameplay",
         "Score tracking",
@@ -262,7 +266,7 @@ export default function Projects() {
       description:
         "Clean and functional to-do list manager with task completion and persistence features",
       tech: ["React", "LocalStorage", "CSS"],
-      links: { github: "https://github.com/harith54/todo-app" },
+      links: { github: "https://github.com/harith54/to-do-list-react" },
       highlights: ["CRUD operations", "State management", "Local persistence"],
     },
   ];
@@ -421,9 +425,9 @@ export default function Projects() {
                             {project.title.substring(0, 2)}
                           </span>
                         </div>
-                        <p className="text-[var(--text-muted)] text-sm">
+                        {/* <p className="text-[var(--text-muted)] text-sm">
                           Project Preview
-                        </p>
+                        </p> */}
                       </div>
                     </div>
 
@@ -478,21 +482,6 @@ export default function Projects() {
                           </div>
                         ))}
                       </div>
-                    </div>
-
-                    {/* Metrics */}
-                    {/* Metrics */}
-                    <div className="flex gap-6 mb-6">
-                      {Object.entries(project.metrics).map(([key, value]) => (
-                        <div key={key} className="text-center">
-                          <div className="text-lg font-bold text-[var(--accent-teal)]">
-                            {value}
-                          </div>
-                          <div className="text-xs text-[var(--text-muted)] uppercase tracking-wide">
-                            {key}
-                          </div>
-                        </div>
-                      ))}
                     </div>
 
                     {/* Tech stack */}
@@ -637,47 +626,6 @@ export default function Projects() {
             Development Activity
           </h3>
           <GitHubContributions />
-        </div>
-
-        {/* Statistics Section */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {[
-            {
-              label: "Total Projects",
-              value: "15+",
-              color: "var(--accent-teal)",
-            },
-            {
-              label: "Lines of Code",
-              value: "25K+",
-              color: "var(--accent-purple)",
-            },
-            {
-              label: "Technologies",
-              value: "20+",
-              color: "var(--accent-orange)",
-            },
-            {
-              label: "Experience",
-              value: "3 Years",
-              color: "var(--accent-teal)",
-            },
-          ].map((stat, index) => (
-            <div
-              key={stat.label}
-              className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl p-6 text-center hover:border-[#00a3a9]/50 transition-all duration-300 hover:shadow-lg group"
-            >
-              <div
-                className="text-3xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300"
-                style={{ color: stat.color }}
-              >
-                {stat.value}
-              </div>
-              <div className="text-[var(--text-secondary)] text-sm uppercase tracking-wide">
-                {stat.label}
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Call to Action */}
