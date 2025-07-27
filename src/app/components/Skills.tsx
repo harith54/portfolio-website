@@ -1,5 +1,19 @@
-export default function Skills() {
-  const skillCategories = [
+import React from "react";
+import type { JSX } from "react";
+
+interface Skill {
+  name: string;
+  level: "Advanced" | "Intermediate" | "Basic";
+}
+
+interface SkillCategory {
+  title: string;
+  icon: JSX.Element;
+  skills: Skill[];
+}
+
+export default function Skills(): JSX.Element {
+  const skillCategories: SkillCategory[] = [
     {
       title: "Languages",
       icon: (
@@ -51,7 +65,7 @@ export default function Skills() {
     },
   ];
 
-  const coursework = [
+  const coursework: string[] = [
     "Data Structures & Algorithms",
     "Software Development & Design",
     "Software & Components",
@@ -64,7 +78,7 @@ export default function Skills() {
     "Discrete Structures",
   ];
 
-  const getLevelWidth = (level) => {
+  const getLevelWidth = (level: Skill["level"]): string => {
     switch (level) {
       case "Advanced":
         return "w-full";
@@ -77,7 +91,7 @@ export default function Skills() {
     }
   };
 
-  const getLevelColor = (level) => {
+  const getLevelColor = (level: Skill["level"]): string => {
     switch (level) {
       case "Advanced":
         return "bg-gradient-to-r from-[var(--accent-teal)] to-[var(--accent-teal)]/80";
