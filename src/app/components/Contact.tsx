@@ -119,14 +119,14 @@ export default function Contact() {
             Touch
           </h2>
           <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-8">
-            Let's connect and explore opportunities to build something amazing
-            together
+            Let&apos;s connect and explore opportunities to build something
+            amazing together
           </p>
 
           {/* CTA Message */}
           <div className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl p-6 max-w-3xl mx-auto mb-12">
             <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-              I'm currently seeking{" "}
+              I&apos;m currently seeking{" "}
               <span className="text-[var(--accent-teal)] font-medium">
                 internship opportunities
               </span>{" "}
@@ -134,8 +134,8 @@ export default function Contact() {
               <span className="text-[var(--accent-purple)] font-medium">
                 innovative projects
               </span>
-              . Whether you're looking to collaborate or just want to say hi,
-              I'd love to hear from you!
+              . Whether you&apos;re looking to collaborate or just want to say
+              hi, I&apos;d love to hear from you!
             </p>
           </div>
         </div>

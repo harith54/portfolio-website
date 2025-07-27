@@ -38,14 +38,14 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[var(--bg-primary)]/95 backdrop-blur-md border-b border-[var(--border-color)] text-[var(--text-primary)]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a
-          href="/"
-          className="text-[var(--accent-teal)] text-xl font-semibold hover:text-[var(--accent-teal-dark)] transition-colors font-mono"
+        <button
+          onClick={() => smoothScrollTo("about")}
+          className="text-[var(--accent-teal)] text-xl font-semibold hover:text-[var(--accent-teal-dark)] transition-colors font-mono bg-transparent border-none cursor-pointer"
         >
           <span className="text-[var(--text-primary)]">{"<"}</span>
           HarithM
           <span className="text-[var(--text-primary)]">{"/>"}</span>
-        </a>
+        </button>
 
         <div className="hidden md:flex gap-8 text-sm font-medium">
           <a

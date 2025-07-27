@@ -84,43 +84,24 @@ export default function Skills(): JSX.Element {
     switch (confidence) {
       case "High":
         return (
-          <div className="flex gap-1">
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
+          <div className="px-2 py-1 bg-[var(--accent-teal)]/20 text-[var(--accent-teal)] rounded text-xs font-medium">
+            Confident
           </div>
         );
       case "Medium":
         return (
-          <div className="flex gap-1">
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-purple)]"></div>
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-purple)]"></div>
-            <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+          <div className="px-2 py-1 bg-[var(--accent-purple)]/20 text-[var(--accent-purple)] rounded text-xs font-medium">
+            Comfortable
           </div>
         );
       case "Learning":
         return (
-          <div className="flex gap-1">
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-orange)]"></div>
-            <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
-            <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+          <div className="px-2 py-1 bg-[var(--accent-orange)]/20 text-[var(--accent-orange)] rounded text-xs font-medium">
+            Learning
           </div>
         );
       default:
         return <div></div>;
-    }
-  };
-
-  const getConfidenceLabel = (confidence: Skill["confidence"]): string => {
-    switch (confidence) {
-      case "High":
-        return "Confident";
-      case "Medium":
-        return "Comfortable";
-      case "Learning":
-        return "Learning";
-      default:
-        return "";
     }
   };
 
@@ -163,7 +144,7 @@ export default function Skills(): JSX.Element {
 
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {/* Skills Categories */}
-            {skillCategories.map((category, categoryIndex) => (
+            {skillCategories.map((category) => (
               <div
                 key={category.title}
                 className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl p-6 hover:border-[#00a3a9]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#00a3a9]/10 group"
@@ -178,16 +159,13 @@ export default function Skills(): JSX.Element {
                 </div>
 
                 <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
+                  {category.skills.map((skill) => (
                     <div key={skill.name} className="group/skill">
                       <div className="flex justify-between items-center">
                         <span className="text-[var(--text-secondary)] font-medium">
                           {skill.name}
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-[var(--text-muted)] uppercase tracking-wide">
-                            {getConfidenceLabel(skill.confidence)}
-                          </span>
                           {getConfidenceIcon(skill.confidence)}
                         </div>
                       </div>
@@ -206,33 +184,27 @@ export default function Skills(): JSX.Element {
               </h4>
               <div className="flex flex-col sm:flex-row gap-4 text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)]"></div>
+                  <div className="px-2 py-1 bg-[var(--accent-teal)]/20 text-[var(--accent-teal)] rounded text-xs font-medium">
+                    Confident
                   </div>
                   <span className="text-[var(--text-secondary)]">
-                    Confident - Regular use & deep understanding
+                    Regular use & deep understanding
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-[var(--accent-purple)]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[var(--accent-purple)]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+                  <div className="px-2 py-1 bg-[var(--accent-purple)]/20 text-[var(--accent-purple)] rounded text-xs font-medium">
+                    Comfortable
                   </div>
                   <span className="text-[var(--text-secondary)]">
-                    Comfortable - Some experience & knowledge
+                    Some experience & knowledge
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-[var(--accent-orange)]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)]"></div>
+                  <div className="px-2 py-1 bg-[var(--accent-orange)]/20 text-[var(--accent-orange)] rounded text-xs font-medium">
+                    Learning
                   </div>
                   <span className="text-[var(--text-secondary)]">
-                    Learning - Recently acquired & improving
+                    Recently acquired & improving
                   </span>
                 </div>
               </div>

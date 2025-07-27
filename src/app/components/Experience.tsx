@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Skills from "./Skills";
 
 export default function Experience() {
   const experiences = [
