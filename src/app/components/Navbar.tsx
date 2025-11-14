@@ -10,7 +10,7 @@ export default function Navbar() {
   const smoothScrollTo = (elementId: string) => {
     const element = document.getElementById(elementId);
     if (element) {
-      const navHeight = 80; // Height of the fixed navbar
+      const navHeight = 80;
       const elementPosition = element.offsetTop - navHeight;
 
       window.scrollTo({
@@ -18,10 +18,7 @@ export default function Navbar() {
         behavior: "smooth",
       });
 
-      // Close mobile menu after click
       setIsOpen(false);
-
-      // Update active section
       setActiveSection(elementId);
     }
   };
@@ -81,28 +78,13 @@ export default function Navbar() {
           </a>
 
           <a
-            href="#skills"
-            onClick={(e) => handleSectionClick(e, "skills")}
-            className={`text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group ${
-              activeSection === "skills" ? "text-[var(--accent-teal)]" : ""
-            }`}
-          >
-            <span className="text-[var(--accent-orange)]">03.</span> Skills
-            <span
-              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
-                activeSection === "skills" ? "w-full" : "w-0 group-hover:w-full"
-              }`}
-            ></span>
-          </a>
-
-          <a
             href="#projects"
             onClick={(e) => handleSectionClick(e, "projects")}
             className={`text-[var(--text-secondary)] hover:text-[var(--accent-teal)] transition-colors relative group ${
               activeSection === "projects" ? "text-[var(--accent-teal)]" : ""
             }`}
           >
-            <span className="text-[var(--accent-orange)]">04.</span> Projects
+            <span className="text-[var(--accent-orange)]">03.</span> Projects
             <span
               className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
                 activeSection === "projects"
@@ -119,7 +101,7 @@ export default function Navbar() {
               activeSection === "contact" ? "text-[var(--accent-teal)]" : ""
             }`}
           >
-            <span className="text-[var(--accent-orange)]">05.</span> Contact
+            <span className="text-[var(--accent-orange)]">04.</span> Contact
             <span
               className={`absolute bottom-0 left-0 h-0.5 bg-[var(--accent-teal)] transition-all duration-300 ${
                 activeSection === "contact"
@@ -159,13 +141,12 @@ export default function Navbar() {
               ></span>
             </div>
 
-            {/* Subtle glow effect on hover */}
             <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-20 bg-gradient-to-r from-[var(--accent-teal)] to-[var(--accent-orange)] blur-sm transition-opacity duration-300"></div>
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown with smooth slide animation */}
+      {/* Mobile Dropdown */}
       <div
         className={`md:hidden transition-all duration-300 ease-in-out ${
           isOpen
@@ -174,10 +155,8 @@ export default function Navbar() {
         } overflow-hidden`}
       >
         <div className="bg-[var(--bg-secondary)]/98 backdrop-blur-lg border-b border-[var(--border-color)] shadow-xl">
-          {/* Animated background gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-teal)]/5 via-transparent to-[var(--accent-orange)]/5"></div>
 
-          {/* Floating dots animation */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-4 left-8 w-1 h-1 bg-[var(--accent-teal)]/40 rounded-full animate-bounce"></div>
             <div
@@ -206,20 +185,14 @@ export default function Navbar() {
                 sectionId: "experience",
               },
               {
-                href: "#skills",
-                number: "03",
-                text: "Skills",
-                sectionId: "skills",
-              },
-              {
                 href: "#projects",
-                number: "04",
+                number: "03",
                 text: "Projects",
                 sectionId: "projects",
               },
               {
                 href: "#contact",
-                number: "05",
+                number: "04",
                 text: "Contact",
                 sectionId: "contact",
               },
@@ -260,13 +233,11 @@ export default function Navbar() {
                     </span>
                   </div>
 
-                  {/* Subtle glow effect */}
                   <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-10 bg-gradient-to-r from-[var(--accent-teal)] to-[var(--accent-orange)] transition-opacity duration-300"></div>
                 </a>
               </div>
             ))}
 
-            {/* Bottom accent line */}
             <div
               className={`mt-4 h-0.5 bg-gradient-to-r from-[var(--accent-teal)] via-[var(--accent-purple)] to-[var(--accent-orange)] transform transition-all duration-500 ${
                 isOpen ? "scale-x-100 opacity-60" : "scale-x-0 opacity-0"

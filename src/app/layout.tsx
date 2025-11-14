@@ -1,6 +1,11 @@
 import "./globals.css";
 import Navbar from "./components/Navbar";
 
+export const metadata = {
+  title: "Harith Madani | Portfolio",
+  description: "My portfolio website",
+};
+
 export default function RootLayout({
   children,
 }: {
