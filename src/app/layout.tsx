@@ -1,5 +1,16 @@
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import { Fira_Code, JetBrains_Mono } from "next/font/google";
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-fira-code",
+});
 
 export const metadata = {
   title: "Harith Madani | Portfolio",
@@ -13,13 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fira+Code:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] font-mono tracking-tight leading-relaxed antialiased">
+      <body
+        className={`${jetBrainsMono.variable} ${firaCode.variable} bg-[var(--bg-primary)] text-[var(--text-primary)] font-mono tracking-tight leading-relaxed antialiased`}
+      >
         <Navbar />
         <main className="min-h-screen">{children}</main>
       </body>
