@@ -1,31 +1,46 @@
 import Image from "next/image";
 
+type ExperienceItem = {
+  id: number;
+  company: string;
+  role: string;
+  duration: string;
+  logo: string;
+  upcoming?: boolean;
+};
+
 export default function Experience() {
-  const experiences = [
+  const experiences: ExperienceItem[] = [
     {
       id: 1,
-      company: "HubSpot",
-      role: "Backend Software Engineer Intern",
-      duration: "Jan 2026 – Apr 2026",
-      upcoming: true,
-      logo: "/hubspot-logo.png",
+      company: "Amazon",
+      role: "Software Development Engineer Intern",
+      duration: "May 2026 - Aug 2026",
+      logo: "/amazon-logo.png",
     },
     {
       id: 2,
+      company: "HubSpot",
+      role: "Software Engineer Intern",
+      duration: "Jan 2026 - Apr 2026",
+      logo: "/hubspot-logo.png",
+    },
+    {
+      id: 3,
       company: "JPMorgan Chase",
       role: "Software Engineering Intern",
       duration: "Jun 2025 – Aug 2025",
       logo: "/chase logo.png",
     },
     {
-      id: 3,
+      id: 4,
       company: "SEO Tech Developer",
-      role: "Software Engineering Intern",
+      role: "Tech Developer Intern",
       duration: "Jun 2025 – Aug 2025",
       logo: "/seo-logo.png",
     },
     {
-      id: 4,
+      id: 5,
       company: "PricewaterhouseCoopers",
       role: "Technical Consultant Extern",
       duration: "Jan 2025 – Mar 2025",
@@ -67,7 +82,7 @@ export default function Experience() {
           <div className="lg:hidden absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#00a3a9] via-[var(--accent-purple)] to-[var(--accent-orange)]"></div>
 
           {/* Desktop: Grid layout */}
-          <div className="hidden lg:grid lg:grid-cols-4 gap-6">
+          <div className="hidden lg:grid lg:grid-cols-5 gap-6">
             {experiences.map((exp) => (
               <div key={exp.id} className="relative">
                 {/* Dot on the line */}
